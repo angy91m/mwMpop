@@ -11,7 +11,6 @@ class SpecialMpop extends \SpecialPage {
 		$this->setHeaders();
 
 		# Get request data from, e.g.
-		// $param = $request->getText( 'param' );
 
 		# Do stuff
 		# ...
@@ -19,7 +18,8 @@ class SpecialMpop extends \SpecialPage {
 		switch ($par) {
 			case 'PermessiInsufficienti':
 				$out->setPageTitle('Permessi insufficienti');
-				$wikitext = 'Non hai i permessi per modificare questa pagina';
+				$pageName = $request->getText( 'page_name' );
+				$wikitext = 'Non hai i permessi per modificare la pagina' .($pageName? " $pageName" : '' );
 				break;
 		}
 		$out->addWikiTextAsInterface( $wikitext );
