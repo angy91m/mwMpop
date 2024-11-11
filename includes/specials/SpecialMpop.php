@@ -19,7 +19,7 @@ class SpecialMpop extends \SpecialPage {
 			case 'PermessiInsufficienti':
 				$out->setPageTitle('Permessi insufficienti');
 				$pageName = $request->getText( 'page_name' );
-				$wikitext = 'Non hai i permessi per modificare la pagina' .($pageName? " $pageName" : '' );
+				$wikitext = 'Non hai i permessi per modificare la pagina' .($pageName? " [[$pageName]]" : '' );
 				break;
 		}
 		$out->addWikiTextAsInterface( $wikitext );
