@@ -7,7 +7,7 @@ class SpecialMpop extends \SpecialPage {
 
 	public function execute( $par ) {
 		$request = $this->getRequest();
-		$output = $this->getOutput();
+		$out = $this->getOutput();
 		$this->setHeaders();
 
 		# Get request data from, e.g.
@@ -15,7 +15,13 @@ class SpecialMpop extends \SpecialPage {
 
 		# Do stuff
 		# ...
-		$wikitext = 'Hello world!';
-		$output->addWikiTextAsInterface( $wikitext );
+		$wikitext = '';
+		switch ($par) {
+			case 'PermessiInsufficienti':
+				$out->setPageTitle('Permessi insufficienti');
+				$wikitext = 'Non hai i permessi per modificare questa pagina';
+				break;
+		}
+		$out->addWikiTextAsInterface( $wikitext );
 	}
 }
